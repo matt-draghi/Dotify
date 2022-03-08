@@ -4,6 +4,7 @@ import Sidebar from "./sidebar";
 import Home from "./home"
 import Playlist from "./playlist";
 import SongList from "./songlist";
+import "../styles/App.css"
 
 function App() {
 
@@ -15,24 +16,26 @@ function App() {
   return (
     <div className="App-container">
       <Sidebar setCurrentPlaylist={setCurrentPlaylist} userId={userId}/>
-      <Switch>
+      <div className="main-content-container">
+        <Switch>
 
-      {/* Route home */}
-        <Route exact path="/">
-          <Home />  
-        </Route>
+        {/* Route home */}
+          <Route exact path="/">
+            <Home />  
+          </Route>
 
-      {/* Route all songs */}
-        <Route exact path="/songs">
-          <SongList />
-        </Route>
+        {/* Route all songs */}
+          <Route exact path="/songs">
+            <SongList />
+          </Route>
 
-      {/* Route selected playlist */}
-        <Route path="/playlist">
-          <Playlist playlistId={playlistId} userId={userId} currentPlaylist={currentPlaylist}/>
-        </Route>
+        {/* Route selected playlist */}
+          <Route path="/playlist">
+            <Playlist playlistId={playlistId} userId={userId} currentPlaylist={currentPlaylist}/>
+          </Route>
 
-      </Switch>
+        </Switch>
+      </div>
     </div>
   );
 }

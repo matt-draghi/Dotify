@@ -23,7 +23,7 @@ function Sidebar({setCurrentPlaylist, userId}){
     }
 
     return(
-        <div>
+        <div className="sidebar">
             <NavLink to="/">
                 Dotify
             </NavLink>
