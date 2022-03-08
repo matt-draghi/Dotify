@@ -22,7 +22,7 @@ function App() {
         </Route>
 
       {/* Route selected playlist */}
-        <Route exact path="/playlist/">
+        <Route exact path="/playlist">
           <Playlist />
         </Route>
 
