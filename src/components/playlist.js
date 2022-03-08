@@ -1,7 +1,8 @@
-function Playlist () {
+import {useEffect, useState} from 'react'
+function Playlist ({userId, playlistId, currentPlaylist}) {
 
     return(
-        <h1>hi</h1>
+        <h1>Playlist</h1>
     )
 }
 

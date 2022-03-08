@@ -1,18 +1,26 @@
 import { useEffect, useState } from "react"
 import {NavLink} from "react-router-dom"
 
-function Sidebar(){
+function Sidebar({setCurrentPlaylist, userId}){
 
-    const user_id = 1
     const [playlists, setPlaylists] = useState([])
 
     useEffect(()=>{
-        fetch(`http://localhost:9292/users/${user_id}/playlists`)
+        fetch(`http://localhost:9292/users/${userId}/playlists`)
         .then(resp => resp.json())
         .then(playlistData => {
             setPlaylists(playlistData)
         })
     },[])
+
+    const onPlaylistClick = (playlist) =>{
+        fetch(`http://localhost:9292/users/${userId}/playlists/${playlist.id}`)
+        .then(resp => resp.json())
+        .then(playlist => {
+            console.log(playlist)
+            setCurrentPlaylist(playlist)}
+        )        
+    }
 
     return(
         <div>
@@ -24,9 +32,9 @@ function Sidebar(){
             </NavLink>
             {playlists.map((playlist)=>{
                 return(
-                <NavLink to={`/playlist/${playlist.id}`}>
-                    {playlist.name}
-                </NavLink>
+                    <NavLink key={playlist.name} to={`/playlist/${playlist.id}`} onClick={() => onPlaylistClick(playlist)}>
+                        {playlist.name}
+                    </NavLink>
                 )
             }
             )}
