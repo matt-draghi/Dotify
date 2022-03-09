@@ -1,17 +1,11 @@
 // import { useEffect, useState } from "react"
 import {NavLink} from "react-router-dom"
 
-function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, setCurrentPlaylistSongs, userId}){
+function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
 
     const onPlaylistClick = (playlist) =>{
         setPlaylistId(playlist.id)
-        fetchPlaylistSongs(playlist)
-        // fetch(`http://localhost:9292/users/${userId}/playlists/${playlist.id}`)
-        // .then(resp => resp.json())
-        // .then(playlist => {
-        //     setCurrentPlaylistSongs(playlist)
-        //     console.log("current playlist songs", playlist)
-        // })        
+        fetchPlaylistSongs(playlist)      
     }
 
     function handleNewPlaylistClick () {
@@ -21,10 +15,18 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, se
         fetch(`http://localhost:9292/users/${userId}/playlists`, {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
-            body:JSON.stringify(newPlaylist)
+            body: JSON.stringify(newPlaylist),
         })
-        .then(r => r.json())
-        .then(newPlaylist => setPlaylists(playlists => [...playlists, newPlaylist]))
+        .then(r => {
+            console.log(r)
+            return (r.json())
+        })
+        .then(newPlaylist => {
+            console.log("this works first")
+            setPlaylists(playlists => [...playlists, newPlaylist])
+            console.log("this works")
+            setPlaylistId(newPlaylist.id)
+        })
     }
             
 
@@ -44,6 +46,7 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, se
                         key={playlist.name} 
                         to={`/playlist/${playlist.id}`} 
                         onClick={() => onPlaylistClick(playlist)}
+                        onPointerOver={() => }
                     >
                         {playlist.name}
                     </NavLink>

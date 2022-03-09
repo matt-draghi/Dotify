@@ -40,7 +40,13 @@ function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylis
     return(
         <div>
             <div className="playlist-container">
-                {playlistId ? <h1>{selectedPlaylist.name}</h1> : 
+                {playlistId ? 
+                
+                    <div>
+                        <h1>{selectedPlaylist.name}</h1>
+                        <button>Rename Playlist</button>
+                    </div>
+                : 
                     <div>
                         <h1>Error</h1>
                         <h3>Please try clicking on the playlist again</h3>

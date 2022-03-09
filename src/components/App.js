@@ -37,7 +37,6 @@ function App() {
       <Sidebar 
         playlists={playlists} 
         setPlaylists={setPlaylists} 
-        // setCurrentPlaylistSongs={setCurrentPlaylistSongs} 
         userId={userId}
         setPlaylistId={setPlaylistId}
         fetchPlaylistSongs = {fetchPlaylistSongs}
