@@ -1,4 +1,4 @@
-// import { useEffect, useState } from "react"
+import { useState } from "react"
 import {NavLink} from "react-router-dom"
 
 function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
@@ -8,7 +8,13 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
         fetchPlaylistSongs(playlist)      
     }
 
-    function handleNewPlaylistClick () {
+    const [hover, setHover] = useState(false)
+    const [target, setTarget] = useState(null)
+    const [targetUrl, setTargetUrl] = useState("")
+    const [modal, setModal] = useState(false)
+    const [input, setInput] = useState("")
+
+    function handleNewPlaylist () {
         let newPlaylist = {
             name: `Playlist #${[playlists.length + 1]}`     
         }
@@ -17,18 +23,53 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(newPlaylist),
         })
-        .then(r => {
-            console.log(r)
-            return (r.json())
-        })
+        .then(r => r.json())
         .then(newPlaylist => {
-            console.log("this works first")
             setPlaylists(playlists => [...playlists, newPlaylist])
-            console.log("this works")
-            setPlaylistId(newPlaylist.id)
         })
     }
-            
+
+    function showNameEditor () {
+        setModal(true)
+        console.log(targetUrl)  
+    }
+
+    function handleInputChange(e) {
+        setInput(e.target.value)
+    }
+
+    function savePlaylistName () {
+        let id = (targetUrl.split('/').pop())
+        
+        fetch(`http://localhost:9292/users/${userId}/playlists/${id}`, {
+            method: 'PATCH',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({name: input}),
+        })
+        .then(r => r.json())
+        .then(updatedPlaylist => {
+            console.log(updatedPlaylist)
+            setModal(false)
+            console.log("playlists =", playlists)
+            setPlaylistId(updatedPlaylist.id)
+        })
+    }  
+    
+    const playlistDeleteClick = () =>{
+        let id = (targetUrl.split('/').pop())
+
+        fetch(`http://localhost:9292/users/${userId}/playlists/${id}`,{
+            method: "DELETE",
+        })
+        .then(resp => resp.json())
+        .then((deletedPlaylist)=>{
+            setPlaylistId(null)
+            return(
+                window.alert(`Playlist "${deletedPlaylist.name}" has been deleted`)
+            )
+        })
+    
+    }
 
     return(
         <div className="sidebar">
@@ -39,17 +80,47 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
             <NavLink to="/songs">
                 All Songs
             </NavLink>
-            <p onClick={handleNewPlaylistClick}>Create Playlist</p>
+            <p onClick={handleNewPlaylist}>Create Playlist</p>
             {playlists.map((playlist)=>{
                 return(
-                    <NavLink 
-                        key={playlist.name} 
-                        to={`/playlist/${playlist.id}`} 
-                        onClick={() => onPlaylistClick(playlist)}
-                        onPointerOver={() => console.log("hi there dev")}
-                    >
-                        {playlist.name}
-                    </NavLink>
+                    <div key={playlist.name}
+                        className="playlist-links"
+                        onMouseEnter={(e) => {
+                            setHover(true) 
+                            setTarget(e.target.innerText)
+                            if (e.target.href) {setTargetUrl(e.target.href)}
+                        }}
+                        onMouseLeave={(e) => {
+                            setHover(false) 
+                        }}>
+                        <NavLink 
+                            to={`/playlist/${playlist.id}`} 
+                            onClick={() => onPlaylistClick(playlist)}>
+                            {playlist.name}
+                        </NavLink>
+                        {hover && playlist.name === target ? 
+                        <div>
+                            <button 
+                                className="edit-button"
+                                onClick={showNameEditor}>
+                                    ✎
+                            </button>
+                            <button
+                                onClick={playlistDeleteClick}><NavLink to="/">🗑️</NavLink></button>
+                        </div> : null}
+                            <div className={modal ? 'modal-active' : 'modal'} id='modal'>
+                                <div className='modal-header'>
+                                    <div className='title'>Rename Playlist</div>
+                                    <button onClick={() => setModal(false)}className='close-button'>x</button>
+                                </div>
+                                <div className='modal-body'>
+                                    <input onChange={handleInputChange}></input>
+                                    <button onClick={savePlaylistName}>Save</button>
+                                </div>
+                            </div>
+                            <div id={modal ? 'overlay-active' : 'overlay'}> </div>
+                        
+                    </div>
                 )
             })}
         </div>
@@ -58,3 +129,4 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
 }
 
 export default Sidebar
+
