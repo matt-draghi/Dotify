@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 import { Switch, Route } from "react-router-dom"
-import Sidebar from "./sidebar";
-import Home from "./home"
-import Playlist from "./playlist";
-import SongList from "./songlist";
+import Sidebar from "./Sidebar";
+import Home from "./Home"
+import Playlist from "./Playlist";
+import SongList from "./SongList";
 import "../styles/App.css"
 
 function App() {

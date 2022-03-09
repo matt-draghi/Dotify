@@ -10,11 +10,11 @@
   display: flex;
   width: 100%;
   border-top: 1px solid;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .song-card > * {
-  margin: 1px
+  margin: 2px
 }
 
 .sidebar{
