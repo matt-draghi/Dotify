@@ -6,6 +6,17 @@
   display: flex;
 }
 
+.song-card { 
+  display: flex;
+  width: 100%;
+  border-top: 1px solid;
+  flex-direction: column;
+}
+
+.song-card > * {
+  margin: 1px
+}
+
 .sidebar{
   display: flex;
   position: fixed;
@@ -25,3 +36,4 @@
 .main-content-container{
   margin-left: 35%;
 }
+

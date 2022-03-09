@@ -6,11 +6,13 @@ function Playlist ({playlists, userId, playlistId, currentPlaylistSongs}) {
     const playlistSongs = currentPlaylistSongs?.map((song) => {
         return <SongCard key={song.id} song={song}/>
     })
+    
     console.log(currentPlaylistSongs)
     console.log(playlistId)
+    
     return(
         <div>
-            {playlistId?  <h1>{selectedPlaylist.name}</h1> : 
+            {playlistId ? <h1>{selectedPlaylist.name}</h1> : 
                 <div>
                     <h1>Error</h1>
                     <h3>Please try clicking on the playlist again</h3>

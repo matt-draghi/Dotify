@@ -16,11 +16,11 @@ function App() {
 
   useEffect(()=>{
     fetch(`http://localhost:9292/users/${userId}/playlists`)
-    .then(resp => resp.json())
-    .then(playlistData => {
-        setPlaylists(playlistData)
-        console.log("playlist data:", playlistData)
-    })
+      .then(resp => resp.json())
+      .then(playlistData => {
+          setPlaylists(playlistData)
+          console.log("playlist data:", playlistData)
+      })
   },[])
 
   return (
