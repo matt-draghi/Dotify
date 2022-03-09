@@ -51,7 +51,7 @@ function App() {
 
         {/* Route all songs */}
           <Route exact path="/songs">
-            <SongList />
+            <SongList playlists={playlists} userId={userId}/>
           </Route>
 
         {/* Route selected playlist */}
