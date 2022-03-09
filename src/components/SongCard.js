@@ -13,10 +13,11 @@ function SongCard({song, selectedPlaylist, userId, setPlaylistId, fetchPlaylistS
     }
 
     return(
+
         <div className="playlist-song-container">
             <a href={song.youtube_link} target="_blank">
                 <div className="song-card">
-                    <img src={song.album.album_cover} width="60" height="60"/>
+                    <img alt={song.title} src={song.album.album_cover} width="70" height="70"/>
                     <h4>{song.title}</h4>
                     <p>{song.album.artist.name}</p>
                 </div>
@@ -24,6 +25,7 @@ function SongCard({song, selectedPlaylist, userId, setPlaylistId, fetchPlaylistS
             <button className="remove-song-from-playlist" onClick={removeSong}>
                 Remove from playlist
             </button>
+
         </div>
     )
 }
