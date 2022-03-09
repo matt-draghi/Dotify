@@ -1,7 +1,7 @@
 // import { useEffect, useState } from "react"
 import {NavLink} from "react-router-dom"
 
-function Sidebar({playlists, setPlaylistId, setCurrentPlaylistSongs, userId}){
+function Sidebar({setPlaylists, playlists, setPlaylistId, setCurrentPlaylistSongs, userId}){
 
     const onPlaylistClick = (playlist) =>{
         setPlaylistId(playlist.id)
@@ -13,14 +13,30 @@ function Sidebar({playlists, setPlaylistId, setCurrentPlaylistSongs, userId}){
         })        
     }
 
+    function handleNewPlaylistClick () {
+        let newPlaylist = {
+            name: `Playlist #${[playlists.length + 1]}`     
+        }
+        fetch(`http://localhost:9292/users/${userId}/playlists`, {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body:JSON.stringify(newPlaylist)
+        })
+        .then(r => r.json())
+        .then(newPlaylist => setPlaylists(playlists => [...playlists, newPlaylist]))
+    }
+            
+
     return(
         <div className="sidebar">
+            
             <NavLink to="/">
                 Dotify
             </NavLink>
             <NavLink to="/songs">
                 All Songs
             </NavLink>
+            <p onClick={handleNewPlaylistClick}>Create Playlist</p>
             {playlists.map((playlist)=>{
                 return(
                     <NavLink 
