@@ -1,16 +1,17 @@
 // import { useEffect, useState } from "react"
 import {NavLink} from "react-router-dom"
 
-function Sidebar({playlists, setPlaylistId, setCurrentPlaylistSongs, userId}){
+function Sidebar({playlists, setPlaylistId, fetchPlaylistSongs, userId}){
 
     const onPlaylistClick = (playlist) =>{
         setPlaylistId(playlist.id)
-        fetch(`http://localhost:9292/users/${userId}/playlists/${playlist.id}`)
-        .then(resp => resp.json())
-        .then(playlist => {
-            setCurrentPlaylistSongs(playlist)
-            console.log("current playlist songs", playlist)
-        })        
+        fetchPlaylistSongs(playlist)
+        // fetch(`http://localhost:9292/users/${userId}/playlists/${playlist.id}`)
+        // .then(resp => resp.json())
+        // .then(playlist => {
+        //     setCurrentPlaylistSongs(playlist)
+        //     console.log("current playlist songs", playlist)
+        // })        
     }
 
     return(

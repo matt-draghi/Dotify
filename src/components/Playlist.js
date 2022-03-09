@@ -2,11 +2,20 @@ import SongCard from "./SongCard"
 import {NavLink} from "react-router-dom"
 
 
-function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylistSongs}) {
+function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylistSongs, fetchPlaylistSongs}) {
     const selectedPlaylist = playlists.find(playlist => playlist.id === playlistId)
     
     const playlistSongs = currentPlaylistSongs?.map((song) => {
-        return <SongCard key={song.id} song={song}/>
+        return (
+            <SongCard 
+                key={song.id} 
+                selectedPlaylist={selectedPlaylist} 
+                song={song}
+                userId={userId}
+                setPlaylistId={setPlaylistId}
+                fetchPlaylistSongs={fetchPlaylistSongs}
+            />
+        )
     })
     
     // console.log(currentPlaylistSongs)

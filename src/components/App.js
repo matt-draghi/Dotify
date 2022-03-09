@@ -23,14 +23,24 @@ function App() {
       })
   },[playlistId])
 
+  const fetchPlaylistSongs = (playlist) =>{
+    fetch(`http://localhost:9292/users/${userId}/playlists/${playlist.id}`)
+        .then(resp => resp.json())
+        .then(playlist => {
+            setCurrentPlaylistSongs(playlist)
+            console.log("current playlist songs", playlist)
+        })
+  }
+
   return (
     <div className="App-container">
       <Sidebar 
         playlists={playlists} 
         setPlaylists={setPlaylists} 
-        setCurrentPlaylistSongs={setCurrentPlaylistSongs} 
+        // setCurrentPlaylistSongs={setCurrentPlaylistSongs} 
         userId={userId}
         setPlaylistId={setPlaylistId}
+        fetchPlaylistSongs = {fetchPlaylistSongs}
       />
       <div className="main-content-container">
         <Switch>
@@ -53,6 +63,7 @@ function App() {
               currentPlaylistSongs={currentPlaylistSongs}
               playlistId={playlistId}
               setPlaylistId={setPlaylistId}
+              fetchPlaylistSongs={fetchPlaylistSongs}
             />
           </Route>
 
