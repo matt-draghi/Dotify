@@ -21,7 +21,7 @@ function App() {
           setPlaylists(playlistData)
           console.log("playlist data:", playlistData)
       })
-  },[])
+  },[playlistId])
 
   return (
     <div className="App-container">
@@ -52,6 +52,7 @@ function App() {
               userId={userId} 
               currentPlaylistSongs={currentPlaylistSongs}
               playlistId={playlistId}
+              setPlaylistId={setPlaylistId}
             />
           </Route>
 
