@@ -46,7 +46,7 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
                         key={playlist.name} 
                         to={`/playlist/${playlist.id}`} 
                         onClick={() => onPlaylistClick(playlist)}
-                        onPointerOver={() => }
+                        onPointerOver={() => console.log("hi there dev")}
                     >
                         {playlist.name}
                     </NavLink>
