@@ -39,21 +39,7 @@ function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylis
     // console.log(currentPlaylistSongs)
     // console.log(playlistId)
 
-    const playlistDeleteClick = () =>{
 
-        console.log(selectedPlaylist)
-        fetch(`http://localhost:9292/users/${userId}/playlists/${playlistId}`,{
-            method: "DELETE",
-        })
-        .then(resp => resp.json())
-        .then(()=>{
-            setPlaylistId(null)
-            return(
-                window.alert(`Playlist "${selectedPlaylist.name}" has been deleted`)
-            )
-        })
-    
-    }
     
     return(
         <div>
@@ -69,11 +55,6 @@ function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylis
                     </div>
                 }
             {playlistSongs}
-            </div>
-            <div className="delete-button">
-                <button onClick={playlistDeleteClick}>
-                    <NavLink to="/">Delete Playlist</NavLink>
-                </button>
             </div>
         </div>
     )
