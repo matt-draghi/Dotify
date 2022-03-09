@@ -1,19 +1,6 @@
-function SongCard({song, selectedPlaylist, userId, setPlaylistId, fetchPlaylistSongs}){
-
-    const removeSong = () =>{
-        console.log(song)
-        fetch(`http://localhost:9292/users/${userId}/playlists/${selectedPlaylist.id}/${song.id}`,{
-            method: "DELETE",
-        })
-        .then(resp => resp.json())
-        .then(()=>{
-            setPlaylistId(selectedPlaylist.id)
-            fetchPlaylistSongs(selectedPlaylist)
-        })
-    }
+function SongCard({song}){
 
     return(
-
         <div className="playlist-song-container">
             <a href={song.youtube_link} target="_blank" rel="noreferrer">
                 <div className="song-card">
@@ -24,10 +11,6 @@ function SongCard({song, selectedPlaylist, userId, setPlaylistId, fetchPlaylistS
                     </div>
                 </div>
             </a>
-            <button className="remove-song-from-playlist" onClick={removeSong}>
-                Remove from playlist
-            </button>
-
         </div>
     )
 }
