@@ -2,34 +2,79 @@
   text-align: center;
 }
 
+body {
+  background: rgb(0, 0, 0);
+}
+
+button {
+  background: rgba(128, 128, 128, 0.205);
+  color: rgb(112, 112, 112);
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+select {
+  background: grey;
+}
+
+h1, h3 {
+  color: white;
+}
+
+.dotify-title {
+  font-size: 22.5em;
+  background: none;
+  color: rgb(49, 49, 49);
+  margin-top: 30%;
+}
+
 .App-container{
   display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  background: rgb(22, 22, 22);
 }
 
 .song-card { 
   display: flex;
-  width: 100%;
+  min-width: 80vw;
   border-top: 1px solid;
+  border-color: rgb(59, 59, 59);
   flex-direction: row;
-  padding-top: 5%;
-  padding-bottom: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
   align-items: center;
-  /* justify-content: flex-start; */
 }
 
 .song-card > * {
+  display: flex;
   justify-content: center;
+  flex-direction: row;
 }
 
 .song-details { 
   display: flex;
   flex-direction: column;
-  margin-left: 5%;
+  margin: auto;
+  padding-left: 15px;
 }
 
 .song-details > * {
   margin: 0;
   align-items: left;
+}
+
+.nav-link {
+  font-size: 17px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.song-link {
+  font-size: 17px;
+  color: #fff;
+  text-decoration: none;
 }
 
 .sidebar{
@@ -40,20 +85,26 @@
   border-right: solid;
   width: 250px;
   align-items: left;
-  padding-left: 2%;
-  padding-top: 3%;
-  background: white;
+  padding-top: 35px;
+  background: rgb(15, 15, 15);
   z-index: 5;
+  color: rgb(19, 19, 19);
 }
 
 .sidebar > *{
-  margin-top: 7%;
+  padding-left:30px;
+  margin-top: 5%;
   margin-bottom: 7%;
   text-decoration: none;
+  color: rgb(245, 245, 245);
 }
 
 .sidebar p { 
   cursor: pointer;
+  padding-bottom: 35px;
+  border-bottom: 1px solid;
+  border-color:rgb(56, 56, 56);
+  
 }
 
 .edit-button {
@@ -61,15 +112,12 @@
 }
 
 .main-content-container{
-  margin-left: 35%;
+  margin-left: 300px;
 }
 
 .playlist-links{
   display: flex;
 }
-
-
-
 
 
 /****** MODAL *******/

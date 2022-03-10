@@ -63,10 +63,8 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
         })
         .then(resp => resp.json())
         .then((deletedPlaylist)=>{
+            setPlaylistId(deletedPlaylist.id)
             setPlaylistId(null)
-            return(
-                window.alert(`Playlist "${deletedPlaylist.name}" has been deleted`)
-            )
         })
     
     }
@@ -74,13 +72,17 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
     return(
         <div className="sidebar">
             
-            <NavLink to="/">
-                Dotify
+            <NavLink to="/" className="nav-link">
+                <h1>Dotify</h1>
             </NavLink>
-            <NavLink to="/songs">
+            <NavLink to="/songs" className="nav-link">
                 All Songs
             </NavLink>
-            <p onClick={handleNewPlaylist}>Create Playlist</p>
+            <p 
+                onClick={handleNewPlaylist}
+                className="nav-link">
+                    Create Playlist
+            </p>
             {playlists.map((playlist)=>{
                 return(
                     <div key={playlist.name}
@@ -94,6 +96,7 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
                             setHover(false) 
                         }}>
                         <NavLink 
+                            className="nav-link"
                             to={`/playlist/${playlist.id}`} 
                             onClick={() => onPlaylistClick(playlist)}>
                             {playlist.name}
@@ -101,11 +104,13 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
                         {hover && playlist.name === target ? 
                         <div>
                             <button 
+                                title="Rename playlist"
                                 className="edit-button"
                                 onClick={showNameEditor}>
                                     ✎
                             </button>
                             <button
+                                title="Delete playlist"
                                 onClick={playlistDeleteClick}><NavLink to="/">🗑️</NavLink></button>
                         </div> : null}
                             <div className={modal ? 'modal-active' : 'modal'} id='modal'>
