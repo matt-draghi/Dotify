@@ -31,6 +31,7 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
 
     function showNameEditor () {
         setModal(true)
+        setInput(target)
     }
 
     function handleInputChange(e) {
@@ -60,7 +61,6 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
             })
             .then(r => r.json())
             .then(updatedPlaylist => {
-                console.log(updatedPlaylist)
                 setModal(false)
                 setPlaylistId(null)
                 setPlaylistId(updatedPlaylist.id)
@@ -133,7 +133,7 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
                                     <button onClick={() => setModal(false)}className='close-button'>x</button>
                                 </div>
                                 <div className='modal-body'>
-                                    <input onChange={handleInputChange}></input>
+                                    <input onChange={handleInputChange} value={input}></input>
                                     <button onClick={savePlaylistName}>Save</button>
                                 </div>
                             </div>
