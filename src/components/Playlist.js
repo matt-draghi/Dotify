@@ -1,5 +1,4 @@
 import SongCard from "./SongCard"
-// import {NavLink} from "react-router-dom"
 
 
 function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylistSongs, fetchPlaylistSongs, setVideoId, videoId}) {
@@ -20,9 +19,10 @@ function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylis
         }
 
         return (
-            <div>
+            <div                    
+              key={`${selectedPlaylist.id} ${song.id}`} 
+            >
                 <SongCard 
-                    key={song.id} 
                     song={song}
                     setVideoId={setVideoId}
                     videoId={videoId}
@@ -33,12 +33,7 @@ function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylis
             </div>
         )
     })
-    
-    // console.log(currentPlaylistSongs)
-    // console.log(playlistId)
-
-
-    
+        
     return(
         <div>
             <div className="playlist-container">

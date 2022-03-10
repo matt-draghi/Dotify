@@ -113,7 +113,8 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
                         }}
                         onMouseLeave={(e) => {
                             setHover(false) 
-                        }}>
+                        }}
+                    >
                         <NavLink 
                             className="nav-link"
                             to={`/playlist/${playlist.id}`} 

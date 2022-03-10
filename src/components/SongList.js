@@ -51,7 +51,7 @@ function SongList ({playlists, userId, setVideoId, videoId}) {
                 return(
                     <div key={song.id} >
                         
-                        <SongCard key={song.id} song={song} videoId={videoId} setVideoId={setVideoId}/>
+                        <SongCard key={`${song.id}`} song={song} videoId={videoId} setVideoId={setVideoId}/>
                         <form onSubmit={handleSubmit}>
                             <select id="playlists" name="playlists" defaultValue="" onChange={handlePlaylistChange}>
                                 <option value="" disabled>Add to playlist</option>
