@@ -47,8 +47,6 @@ function SongCard({song, setVideoId, videoId}){
                 </div>
                 <div className='modal-body'>
                 <iframe title={song.name} src={`https://www.youtube.com/embed/${videoId}`}></iframe>
-                {console.log("url:", song.youtube_link)}
-                {console.log("video link", `https://www.youtube.com/embed/${videoId}`)}
                 </div>
             </div>
             <div id={modalIsOpen ? 'overlay-active' : 'overlay'}> </div>

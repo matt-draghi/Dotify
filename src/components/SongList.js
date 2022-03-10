@@ -37,8 +37,6 @@ function SongList ({playlists, userId}) {
 
             const handleSubmit = (e) =>{
                 e.preventDefault()
-                console.log("playlist", addToPlaylist)
-                console.log("song", song)
                 addSongToPlaylist(song)
             }
         
@@ -50,8 +48,8 @@ function SongList ({playlists, userId}) {
                 <div key={song.id} >
                     <SongCard key={song.id} song={song} videoId={videoId} setVideoId={setVideoId}/>
                     <form onSubmit={handleSubmit}>
-                        <select id="playlists" name="playlists" defaultValue={addToPlaylist} onChange={handlePlaylistChange}>
-                            <option value="" disabled selected>Add to playlist</option>
+                        <select id="playlists" name="playlists" defaultValue="" onChange={handlePlaylistChange}>
+                            <option value="" disabled>Add to playlist</option>
                             {playlists.map((playlist)=>{
                                 return(
                                     <option 

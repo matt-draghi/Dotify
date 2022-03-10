@@ -19,7 +19,6 @@ function App() {
       .then(resp => resp.json())
       .then(playlistData => {
           setPlaylists(playlistData)
-          console.log("playlist data:", playlistData)
       })
   },[playlistId])
 
@@ -28,7 +27,6 @@ function App() {
         .then(resp => resp.json())
         .then(playlist => {
             setCurrentPlaylistSongs(playlist)
-            console.log("current playlist songs", playlist)
         })
   }
 
