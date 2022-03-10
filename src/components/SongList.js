@@ -46,6 +46,10 @@ function SongList ({playlists, userId}) {
 
             return(
                 <div key={song.id} >
+                    <div className="playlist-header">
+                        <h1>Today's Top Hits</h1>
+                        {/* TODO: add duration and last updated */}
+                    </div>
                     <SongCard key={song.id} song={song} videoId={videoId} setVideoId={setVideoId}/>
                     <form onSubmit={handleSubmit}>
                         <select id="playlists" name="playlists" defaultValue="" onChange={handlePlaylistChange}>

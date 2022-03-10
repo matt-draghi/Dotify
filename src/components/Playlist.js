@@ -45,8 +45,9 @@ function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylis
         <div>
             <div className="playlist-container">
                 {playlistId ? 
-                    <div>
+                    <div className="playlist-header">
                         <h1>{selectedPlaylist.name}</h1>
+                        {/* TODO: add duration and last updated */}
                     </div>
                 : 
                     <div>

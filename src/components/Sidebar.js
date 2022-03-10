@@ -85,10 +85,15 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
 
     return(
         <div className="sidebar">
+
+            {/* STRETCH TODO: switch user button */}
             
             <NavLink to="/" className="nav-link">
                 <h1>Dotify</h1>
             </NavLink>
+
+            {/* TODO: Insert search bar that filters songs*/}
+
             <NavLink to="/songs" className="nav-link">
                 All Songs
             </NavLink>
