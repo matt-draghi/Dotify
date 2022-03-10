@@ -46,7 +46,7 @@ function SongCard({song, setVideoId, videoId}){
                     <button onClick={closeModal}className='close-button'>x</button>
                 </div>
                 <div className='modal-body'>
-                <iframe src={`https://www.youtube.com/embed/${videoId}`}></iframe>
+                <iframe title={song.name} src={`https://www.youtube.com/embed/${videoId}`}></iframe>
                 {console.log("url:", song.youtube_link)}
                 {console.log("video link", `https://www.youtube.com/embed/${videoId}`)}
                 </div>

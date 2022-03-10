@@ -39,20 +39,36 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
     }
 
     function savePlaylistName () {
-        let id = (targetUrl.split('/').pop())
         
-        fetch(`http://localhost:9292/users/${userId}/playlists/${id}`, {
-            method: 'PATCH',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({name: input}),
-        })
-        .then(r => r.json())
-        .then(updatedPlaylist => {
-            console.log(updatedPlaylist)
-            setModal(false)
-            console.log("playlists =", playlists)
-            setPlaylistId(updatedPlaylist.id)
-        })
+        
+        
+        if (input.length === 0) {
+            alert("Names must be at least one character")
+        }
+        else {
+            
+            // if (playlists.find(playlist => playlist.name === input)) {
+            //     alert("Playlist already exists, please select a new name")
+            // // let duplicateId = 1
+            // // setInput(`${input} ${duplicateId}`)
+            // }
+            let id = (targetUrl.split('/').pop())
+
+            fetch(`http://localhost:9292/users/${userId}/playlists/${id}`, {
+                method: 'PATCH',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({name: input}),
+            })
+            .then(r => r.json())
+            .then(updatedPlaylist => {
+                console.log(updatedPlaylist)
+                setModal(false)
+                console.log("playlists =", playlists)
+                setPlaylistId(null)
+                setPlaylistId(updatedPlaylist.id)
+            })
+        }
+        
     }  
     
     const playlistDeleteClick = () =>{
