@@ -5,6 +5,7 @@ function SongList ({playlists, userId}) {
 
     const [allSongs, setAllSongs] = useState([])
     const [addToPlaylist, setAddToPlaylist] = useState()
+    const [videoId, setVideoId] = useState("")
 
     useEffect (() => {
         fetch(`http://localhost:9292/songs`)
@@ -47,7 +48,7 @@ function SongList ({playlists, userId}) {
 
             return(
                 <div key={song.id} >
-                    <SongCard key={song.id} song={song}/>
+                    <SongCard key={song.id} song={song} videoId={videoId} setVideoId={setVideoId}/>
                     <form onSubmit={handleSubmit}>
                         <select id="playlists" name="playlists" defaultValue={addToPlaylist} onChange={handlePlaylistChange}>
                             <option value="" disabled selected>Add to playlist</option>
