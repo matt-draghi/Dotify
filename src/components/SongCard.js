@@ -1,11 +1,12 @@
 import { useState } from "react"
 
-function SongCard({song}){
+function SongCard({song, setVideoId, videoId}){
 
-    const [videoId, setVideoId] = useState("")
+    
     const [modalIsOpen, setModalIsOpen] = useState(false)
 
     const handleSongPlay = () => {
+        setVideoId(null)
         setModalIsOpen(true)
         extractVideoID(song.youtube_link)
         
