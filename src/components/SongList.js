@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import SongCard from './SongCard'
 
-function SongList ({playlists, userId, setVideoId, videoId}) {
+function SongList ({playlists, userId, setVideoId, videoId, setPlaylistId}) {
 
     const [allSongs, setAllSongs] = useState([])
     const [addToPlaylist, setAddToPlaylist] = useState()
@@ -28,6 +28,11 @@ function SongList ({playlists, userId, setVideoId, videoId}) {
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify(newPlaylistSong),
             })
+            .then(r => r.json())
+            .then(playlist => {
+                setPlaylistId(null)
+                setPlaylistId(playlist.id)
+            })
         }
     }
 
@@ -52,7 +57,7 @@ function SongList ({playlists, userId, setVideoId, videoId}) {
                     <div key={song.id} >
                         
                         <SongCard key={`${song.id}`} song={song} videoId={videoId} setVideoId={setVideoId}/>
-                        <form onSubmit={handleSubmit}>
+                        <form onSubmit={handleSubmit} className="add-song-form">
                             <select id="playlists" name="playlists" defaultValue="" onChange={handlePlaylistChange}>
                                 <option value="" disabled>Add to playlist</option>
                                 {playlists.map((playlist)=>{

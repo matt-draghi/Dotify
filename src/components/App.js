@@ -21,7 +21,7 @@ function App() {
       .then(playlistData => {
           setPlaylists(playlistData)
       })
-  },[playlistId])
+  },[playlistId, currentPlaylistSongs])
 
   const fetchPlaylistSongs = (playlist) =>{
     fetch(`http://localhost:9292/users/${userId}/playlists/${playlist.id}`)
@@ -55,6 +55,7 @@ function App() {
               userId={userId}
               setVideoId={setVideoId}
               videoId={videoId}
+              setPlaylistId={setPlaylistId}
             />
           </Route>
 

@@ -40,7 +40,8 @@ function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylis
                 {playlistId ? 
                     <div className="playlist-header">
                         <h1>{selectedPlaylist.name}</h1>
-                        {/* TODO: add duration and last updated */}
+                        <h3>{`Playlist length: ${new Date(selectedPlaylist.duration * 1000).toISOString().substr(14, 5)}`}</h3>
+                        <p>{`Last update: ${selectedPlaylist.last_update.match(/\d{4}-\d{2}-\d{2}/)}`}</p>
                     </div>
                 : 
                     <div>

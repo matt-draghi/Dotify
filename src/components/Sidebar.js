@@ -89,7 +89,7 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
             {/* STRETCH TODO: switch user button */}
             
             <NavLink to="/" className="nav-link">
-                <h1>Dotify</h1>
+                <h1>Dotify.</h1>
             </NavLink>
 
             {/* TODO: Insert search bar that filters songs*/}
