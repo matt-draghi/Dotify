@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
 import SongCard from './SongCard'
 
-function SongList ({playlists, userId}) {
+function SongList ({playlists, userId, setVideoId, videoId}) {
 
     const [allSongs, setAllSongs] = useState([])
     const [addToPlaylist, setAddToPlaylist] = useState()
-    const [videoId, setVideoId] = useState("")
 
     useEffect (() => {
         fetch(`http://localhost:9292/songs`)
@@ -33,43 +32,46 @@ function SongList ({playlists, userId}) {
     }
 
     return(
-        allSongs.map(song => {
+        <div>
+            <div className="playlist-header">
+                <h1>Today's Top Hits</h1>
+                {/* TODO: add duration and last updated */}
+            </div>
+            {allSongs.map(song => {
 
-            const handleSubmit = (e) =>{
-                e.preventDefault()
-                addSongToPlaylist(song)
-            }
-        
-            const handlePlaylistChange = (e) => {
-                setAddToPlaylist(e.target.value)
-            }
+                const handleSubmit = (e) =>{
+                    e.preventDefault()
+                    addSongToPlaylist(song)
+                }
+            
+                const handlePlaylistChange = (e) => {
+                    setAddToPlaylist(e.target.value)
+                }
 
-            return(
-                <div key={song.id} >
-                    <div className="playlist-header">
-                        <h1>Today's Top Hits</h1>
-                        {/* TODO: add duration and last updated */}
+                return(
+                    <div key={song.id} >
+                        
+                        <SongCard key={song.id} song={song} videoId={videoId} setVideoId={setVideoId}/>
+                        <form onSubmit={handleSubmit}>
+                            <select id="playlists" name="playlists" defaultValue="" onChange={handlePlaylistChange}>
+                                <option value="" disabled>Add to playlist</option>
+                                {playlists.map((playlist)=>{
+                                    return(
+                                        <option 
+                                            key={playlist.name + playlist.id} 
+                                            value={playlist.name}
+                                        >
+                                            {playlist.name}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+                            <input type="submit" value="Add Song"/>
+                        </form>
                     </div>
-                    <SongCard key={song.id} song={song} videoId={videoId} setVideoId={setVideoId}/>
-                    <form onSubmit={handleSubmit}>
-                        <select id="playlists" name="playlists" defaultValue="" onChange={handlePlaylistChange}>
-                            <option value="" disabled>Add to playlist</option>
-                            {playlists.map((playlist)=>{
-                                return(
-                                    <option 
-                                        key={playlist.name + playlist.id} 
-                                        value={playlist.name}
-                                    >
-                                        {playlist.name}
-                                    </option>
-                                )
-                            })}
-                        </select>
-                        <input type="submit" value="Add Song"/>
-                    </form>
-                </div>
-            )
-        })
+                )
+            })}
+        </div>
     )
 }
 

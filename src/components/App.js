@@ -13,6 +13,7 @@ function App() {
   const [currentPlaylistSongs, setCurrentPlaylistSongs] = useState()
   const [playlists, setPlaylists] = useState([])
   const [playlistId, setPlaylistId] = useState()
+  const [videoId, setVideoId] = useState("")
 
   useEffect(()=>{
     fetch(`http://localhost:9292/users/${userId}/playlists`)
@@ -49,7 +50,12 @@ function App() {
 
         {/* Route all songs */}
           <Route exact path="/songs">
-            <SongList playlists={playlists} userId={userId}/>
+            <SongList 
+              playlists={playlists} 
+              userId={userId}
+              setVideoId={setVideoId}
+              videoId={videoId}
+            />
           </Route>
 
         {/* Route selected playlist */}
@@ -61,6 +67,8 @@ function App() {
               playlistId={playlistId}
               setPlaylistId={setPlaylistId}
               fetchPlaylistSongs={fetchPlaylistSongs}
+              setVideoId={setVideoId}
+              videoId={videoId}
             />
           </Route>
 

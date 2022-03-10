@@ -2,7 +2,7 @@ import SongCard from "./SongCard"
 // import {NavLink} from "react-router-dom"
 
 
-function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylistSongs, fetchPlaylistSongs}) {
+function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylistSongs, fetchPlaylistSongs, setVideoId, videoId}) {
     const selectedPlaylist = playlists.find(playlist => playlist.id === playlistId)
     
     const playlistSongs = currentPlaylistSongs?.map((song) => {
@@ -23,11 +23,9 @@ function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylis
             <div>
                 <SongCard 
                     key={song.id} 
-                    // selectedPlaylist={selectedPlaylist} 
                     song={song}
-                    // userId={userId}
-                    // setPlaylistId={setPlaylistId}
-                    // fetchPlaylistSongs={fetchPlaylistSongs}
+                    setVideoId={setVideoId}
+                    videoId={videoId}
                 />
                 <button className="remove-song-from-playlist" onClick={removeSong}>
                     Remove from playlist
