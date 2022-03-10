@@ -104,11 +104,13 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
                         {hover && playlist.name === target ? 
                         <div>
                             <button 
+                                title="Rename playlist"
                                 className="edit-button"
                                 onClick={showNameEditor}>
                                     ✎
                             </button>
                             <button
+                                title="Delete playlist"
                                 onClick={playlistDeleteClick}><NavLink to="/">🗑️</NavLink></button>
                         </div> : null}
                             <div className={modal ? 'modal-active' : 'modal'} id='modal'>

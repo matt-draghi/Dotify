@@ -7,8 +7,11 @@ body {
 }
 
 button {
-  background: rgba(128, 128, 128, 0.185);
-  color: rgb(146, 146, 146);
+  background: rgba(128, 128, 128, 0.205);
+  color: rgb(112, 112, 112);
+  border-radius: 5px;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
 select {
@@ -115,6 +118,7 @@ h1, h3 {
 .playlist-links{
   display: flex;
 }
+
 
 /****** MODAL *******/
 
