@@ -1,9 +1,8 @@
 function Home(){
 
 return(
-    <h1>Dotify</h1>
+    <h1 className="dotify-title">Dotify</h1>
 )
-
 }
 
 export default Home
