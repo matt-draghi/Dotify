@@ -1,12 +1,14 @@
 import { useState, useEffect } from 'react'
 import SongCard from './SongCard'
 
-function SongList ({playlists, userId, setVideoId, videoId, setPlaylistId}) {
+function SongList ({search, setSearchToAllSongs, playlists, userId, setVideoId, videoId, setPlaylistId}) {
 
     const [allSongs, setAllSongs] = useState([])
     const [addToPlaylist, setAddToPlaylist] = useState()
 
     useEffect (() => {
+        setSearchToAllSongs(false)
+
         fetch(`http://localhost:9292/songs`)
             .then(r => r.json())
             .then(songs => setAllSongs(songs))
@@ -36,13 +38,24 @@ function SongList ({playlists, userId, setVideoId, videoId, setPlaylistId}) {
         }
     }
 
+    console.log(allSongs)
+
+    const filteredSongs = allSongs.filter((song) => {
+        return (
+            song.title.toUpperCase().includes(search.toUpperCase()) || 
+            song.album.artist.name.toUpperCase().includes(search.toUpperCase()) || 
+            song.album.title.toUpperCase().includes(search.toUpperCase())
+        )
+    })
+    
+
     return(
         <div>
             <div className="playlist-header">
                 <h1>Today's Top Hits</h1>
                 {/* TODO: add duration and last updated */}
             </div>
-            {allSongs.map(song => {
+            {filteredSongs.map(song => {
 
                 const handleSubmit = (e) =>{
                     e.preventDefault()

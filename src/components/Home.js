@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react'
 
-function Home(){
+function Home({setSearchToAllSongs}){
 
     const [user, setUser] = useState("")
 
     useEffect (() => {
+        setSearchToAllSongs(true)
+
         fetch("http://localhost:9292/users/1")
             .then(r => r.json())
             .then(user => setUser(user))

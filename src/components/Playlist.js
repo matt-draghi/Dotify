@@ -1,10 +1,21 @@
 import SongCard from "./SongCard"
+import { useEffect } from "react"
 
-
-function Playlist ({setPlaylistId, playlists, userId, playlistId, currentPlaylistSongs, fetchPlaylistSongs, setVideoId, videoId}) {
-    const selectedPlaylist = playlists.find(playlist => playlist.id === playlistId)
+function Playlist ({search, setSearchToAllSongs, setPlaylistId, playlists, userId, playlistId, currentPlaylistSongs, fetchPlaylistSongs, setVideoId, videoId}) {
     
-    const playlistSongs = currentPlaylistSongs?.map((song) => {
+    useEffect(() => setSearchToAllSongs(false), [])
+
+    const selectedPlaylist = playlists.find(playlist => playlist.id === playlistId)
+    console.log(currentPlaylistSongs)
+    const filteredSongs = currentPlaylistSongs?.filter((song) => {
+        return (
+
+            song.title.toUpperCase().includes(search.toUpperCase()) || 
+            song.album.artist.name.toUpperCase().includes(search.toUpperCase()) || 
+            song.album.title.toUpperCase().includes(search.toUpperCase())
+        )
+    })
+    const playlistSongs = filteredSongs?.map((song) => {
         
         const removeSong = () =>{
             console.log(song)

@@ -14,6 +14,8 @@ function App() {
   const [playlists, setPlaylists] = useState([])
   const [playlistId, setPlaylistId] = useState()
   const [videoId, setVideoId] = useState("")
+  const [searchToAllSongs, setSearchToAllSongs] = useState(false)
+  const [search, setSearch] = useState("")
 
   useEffect(()=>{
     fetch(`http://localhost:9292/users/${userId}/playlists`)
@@ -39,13 +41,15 @@ function App() {
         userId={userId}
         setPlaylistId={setPlaylistId}
         fetchPlaylistSongs = {fetchPlaylistSongs}
+        setSearch={setSearch}
+        search={search}
       />
       <div className="main-content-container">
         <Switch>
 
         {/* Route home */}
           <Route exact path="/">
-            <Home />  
+            <Home setSearchToAllSongs={setSearchToAllSongs}/>  
           </Route>
 
         {/* Route all songs */}
@@ -56,6 +60,8 @@ function App() {
               setVideoId={setVideoId}
               videoId={videoId}
               setPlaylistId={setPlaylistId}
+              setSearchToAllSongs = {setSearchToAllSongs}
+              search={search}
             />
           </Route>
 
@@ -70,6 +76,8 @@ function App() {
               fetchPlaylistSongs={fetchPlaylistSongs}
               setVideoId={setVideoId}
               videoId={videoId}
+              setSearchToAllSongs = {setSearchToAllSongs}
+              search={search}
             />
           </Route>
 

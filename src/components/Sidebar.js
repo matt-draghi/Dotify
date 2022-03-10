@@ -1,7 +1,8 @@
 import { useState } from "react"
 import {NavLink} from "react-router-dom"
+import Search from "./Search"
 
-function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
+function Sidebar({search, setSearch, setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
 
     const onPlaylistClick = (playlist) =>{
         setPlaylistId(playlist.id)
@@ -91,9 +92,7 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
             <NavLink to="/" className="nav-link">
                 <h1>Dotify.</h1>
             </NavLink>
-
-            {/* TODO: Insert search bar that filters songs*/}
-
+            <Search setSearch={setSearch} search={search}/>
             <NavLink to="/songs" className="nav-link">
                 All Songs
             </NavLink>
@@ -118,7 +117,8 @@ function Sidebar({setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, us
                         <NavLink 
                             className="nav-link"
                             to={`/playlist/${playlist.id}`} 
-                            onClick={() => onPlaylistClick(playlist)}>
+                            onClick={() => onPlaylistClick(playlist)}
+                        >
                             {playlist.name}
                         </NavLink>
                         {hover && playlist.name === target ? 

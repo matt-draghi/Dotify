@@ -140,6 +140,10 @@ h1, h3, p {
   
 }
 
+.search {
+  border-radius: 20px;
+}
+
 .edit-button {
   margin-left: 10px;
 }
