@@ -14,7 +14,10 @@ function Home({setSearchToAllSongs}){
 
 return(
     <div className="home-page">
-        <h1 className="dotify-title">Dotify.</h1>
+        <div className="dotify-title-div">
+            <h1 className="dotify-title">Dotify</h1>
+            <h1 className="title-dot">.</h1>
+        </div>
         <p className="welcome">{user.user_name ? `Hello, ${user.user_name}.` : null}</p>
     </div>
 )
