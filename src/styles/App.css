@@ -2,12 +2,12 @@
   text-align: center;
 }
 
-.add-song-form {
+.add-song-form, .remove-song-from-playlist {
   margin-bottom: 10px;
 
 }
 
-.add-song-form input {
+.add-song-form input, .remove-song-from-playlist {
   background: #333333;
   color:#ffffff;
   border-radius: 5px;
@@ -41,10 +41,6 @@ select {
 h1, h3, p {
   color: white;
 }
-
-/* .home-page {
-  
-} */
 
 .dotify-title {
   font-size: 22.5em;

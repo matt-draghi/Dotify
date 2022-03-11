@@ -53,7 +53,6 @@ function SongList ({search, setSearchToAllSongs, playlists, userId, setVideoId, 
         <div>
             <div className="playlist-header">
                 <h1>Today's Top Hits</h1>
-                {/* TODO: add duration and last updated */}
             </div>
             {filteredSongs.map(song => {
 

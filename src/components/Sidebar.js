@@ -88,9 +88,7 @@ function Sidebar({setSearchToAllSongs, playlistId, searchToAllSongs, search, set
 
     return(
         <div className="sidebar">
-
-            {/* STRETCH TODO: switch user button */}
-            
+           
             <NavLink to="/" className="nav-link">
                 <div id="dotify-nav-div">
                     <h1 id="dotify-nav">Dotify</h1>
