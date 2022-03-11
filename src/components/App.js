@@ -43,6 +43,7 @@ function App() {
         fetchPlaylistSongs = {fetchPlaylistSongs}
         setSearch={setSearch}
         search={search}
+        searchToAllSongs={searchToAllSongs}
       />
       <div className="main-content-container">
         <Switch>

@@ -2,7 +2,7 @@ import { useState } from "react"
 import {NavLink} from "react-router-dom"
 import Search from "./Search"
 
-function Sidebar({search, setSearch, setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
+function Sidebar({searchToAllSongs, search, setSearch, setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
 
     const onPlaylistClick = (playlist) =>{
         setPlaylistId(playlist.id)
@@ -92,7 +92,11 @@ function Sidebar({search, setSearch, setPlaylists, playlists, setPlaylistId, fet
             <NavLink to="/" className="nav-link">
                 <h1>Dotify.</h1>
             </NavLink>
-            <Search setSearch={setSearch} search={search}/>
+            <Search 
+                setSearch={setSearch} 
+                search={search}
+                searchToAllSongs={searchToAllSongs}
+            />
             <NavLink to="/songs" className="nav-link">
                 All Songs
             </NavLink>
