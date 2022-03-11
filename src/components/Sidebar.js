@@ -56,6 +56,7 @@ function Sidebar({setSearchToAllSongs, playlistId, searchToAllSongs, search, set
             }
 
             let id = (targetUrl.split('/').pop())
+            console.log(id)
             fetch(`http://localhost:9292/users/${userId}/playlists/${id}`, {
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
@@ -91,7 +92,10 @@ function Sidebar({setSearchToAllSongs, playlistId, searchToAllSongs, search, set
             {/* STRETCH TODO: switch user button */}
             
             <NavLink to="/" className="nav-link">
-                <h1>Dotify.</h1>
+                <div id="dotify-nav-div">
+                    <h1 id="dotify-nav">Dotify</h1>
+                    <h1 id="dotify-dot">.</h1>
+                </div>
             </NavLink>
             <Search 
                 setSearch={setSearch} 

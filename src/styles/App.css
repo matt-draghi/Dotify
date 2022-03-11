@@ -54,6 +54,14 @@ h1, h3, p {
   margin-bottom: 0;
 }
 
+#dotify-nav {
+  margin-bottom: 20px;
+}
+
+#dotify-dot {
+  color: rgb(0, 75, 19);
+}
+
 .welcome {
   font-weight: bold;
   font-size: 3em;
@@ -141,7 +149,7 @@ h1, h3, p {
 }
 
 .search {
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 .edit-button {
