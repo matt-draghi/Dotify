@@ -2,11 +2,12 @@ import { useState } from "react"
 import {NavLink} from "react-router-dom"
 import Search from "./Search"
 
-function Sidebar({searchToAllSongs, search, setSearch, setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
+function Sidebar({setSearchToAllSongs, playlistId, searchToAllSongs, search, setSearch, setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
 
     const onPlaylistClick = (playlist) =>{
         setPlaylistId(playlist.id)
-        fetchPlaylistSongs(playlist)      
+        fetchPlaylistSongs(playlist)
+        setSearchToAllSongs(false)      
     }
 
     const [hover, setHover] = useState(false)
@@ -96,6 +97,7 @@ function Sidebar({searchToAllSongs, search, setSearch, setPlaylists, playlists, 
                 setSearch={setSearch} 
                 search={search}
                 searchToAllSongs={searchToAllSongs}
+                playlistId={playlistId}
             />
             <NavLink to="/songs" className="nav-link">
                 All Songs
