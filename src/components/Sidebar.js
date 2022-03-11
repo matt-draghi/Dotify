@@ -2,11 +2,12 @@ import { useState } from "react"
 import {NavLink} from "react-router-dom"
 import Search from "./Search"
 
-function Sidebar({searchToAllSongs, search, setSearch, setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
+function Sidebar({setSearchToAllSongs, playlistId, searchToAllSongs, search, setSearch, setPlaylists, playlists, setPlaylistId, fetchPlaylistSongs, userId}){
 
     const onPlaylistClick = (playlist) =>{
         setPlaylistId(playlist.id)
-        fetchPlaylistSongs(playlist)      
+        fetchPlaylistSongs(playlist)
+        setSearchToAllSongs(false)      
     }
 
     const [hover, setHover] = useState(false)
@@ -55,6 +56,7 @@ function Sidebar({searchToAllSongs, search, setSearch, setPlaylists, playlists, 
             }
 
             let id = (targetUrl.split('/').pop())
+            console.log(id)
             fetch(`http://localhost:9292/users/${userId}/playlists/${id}`, {
                 method: 'PATCH',
                 headers: {'Content-Type': 'application/json'},
@@ -90,12 +92,16 @@ function Sidebar({searchToAllSongs, search, setSearch, setPlaylists, playlists, 
             {/* STRETCH TODO: switch user button */}
             
             <NavLink to="/" className="nav-link">
-                <h1>Dotify.</h1>
+                <div id="dotify-nav-div">
+                    <h1 id="dotify-nav">Dotify</h1>
+                    <h1 id="dotify-dot">.</h1>
+                </div>
             </NavLink>
             <Search 
                 setSearch={setSearch} 
                 search={search}
                 searchToAllSongs={searchToAllSongs}
+                playlistId={playlistId}
             />
             <NavLink to="/songs" className="nav-link">
                 All Songs

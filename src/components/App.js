@@ -44,6 +44,8 @@ function App() {
         setSearch={setSearch}
         search={search}
         searchToAllSongs={searchToAllSongs}
+        setSearchToAllSongs={setSearchToAllSongs}
+        playlistId={playlistId}
       />
       <div className="main-content-container">
         <Switch>

@@ -6,7 +6,6 @@ function Playlist ({search, setSearchToAllSongs, setPlaylistId, playlists, userI
     useEffect(() => setSearchToAllSongs(false), [])
 
     const selectedPlaylist = playlists.find(playlist => playlist.id === playlistId)
-    console.log(currentPlaylistSongs)
     const filteredSongs = currentPlaylistSongs?.filter((song) => {
         return (
 
@@ -31,7 +30,7 @@ function Playlist ({search, setSearchToAllSongs, setPlaylistId, playlists, userI
 
         return (
             <div                    
-              key={`${selectedPlaylist.id} ${song.id}`} 
+              key={`${song.id}`} 
             >
                 <SongCard 
                     song={song}

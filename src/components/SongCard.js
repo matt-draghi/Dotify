@@ -30,7 +30,7 @@ function SongCard({song, setVideoId, videoId}){
         <div className="playlist-song-container">
             
              <div className="song-card">
-                <img alt={song.title} src={song.album.album_cover} width="120" height="120" onClick={handleSongPlay}/>
+                <img className="song-card-image" alt={song.title} src={song.album.album_cover} width="120" height="120" onClick={handleSongPlay}/>
                 <div className="song-details">
                     <h4>{song.title}</h4>
                     <p>{song.album.artist.name}</p>

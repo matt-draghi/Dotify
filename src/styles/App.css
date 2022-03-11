@@ -49,15 +49,48 @@ h1, h3, p {
 .dotify-title {
   font-size: 22.5em;
   background: none;
-  color: rgb(49, 49, 49);
+  color: rgb(36, 36, 36);
   margin-top: 20%;
   margin-bottom: 0;
+  border-radius: 150px;
+}
+
+.title-dot {
+  font-size: 22.5em;
+  background: none;
+  color: rgba(82, 82, 82, 0.801);
+  margin-top: 20%;
+  margin-bottom: 0;
+}
+
+.dotify-title-div {
+  display: flex;
+  flex-direction: row;
+}
+
+
+#dotify-nav-div {
+  display: flex;
+  flex-direction:row;
+  margin-bottom: 20px;
+}
+
+#dotify-nav {
+  margin-bottom: 0;
+  margin-top: 17px;
+}
+
+#dotify-dot {
+  color: rgb(71, 107, 204);
+  margin-bottom: 0;
+  margin-top: 0px;
+  font-size: 50px;
 }
 
 .welcome {
   font-weight: bold;
   font-size: 3em;
-  color: rgb(49, 49, 49);
+  color: rgb(73, 73, 73);
   margin-left: 6em;
 }
 
@@ -83,6 +116,10 @@ h1, h3, p {
   display: flex;
   justify-content: center;
   flex-direction: row;
+}
+
+.song-card-image {
+  cursor: pointer;
 }
 
 .song-details { 
@@ -141,7 +178,7 @@ h1, h3, p {
 }
 
 .search {
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 .edit-button {
@@ -266,12 +303,12 @@ h1, h3, p {
   left: 50%;
   transition: 200ms ease-in-out;
   border: 1px solid rgb(255, 255, 255);
-  border-radius: 30px;
+  border-radius: 10px;
   z-index: 10;
   background-color: #222222;
   color: white;
-  height: 770px;
-  width: 1280px;
+  height: 765px;
+  width: 1285px;
   max-width: 70%;
   text-align: center;
 }
@@ -338,7 +375,7 @@ h1, h3, p {
   left: 50%;
   transition: 200ms ease-in-out;
   border: 1px solid rgb(255, 255, 255);
-  border-radius: 15px;
+  border-radius: 10px;
   z-index: 10;
   background-color: #222222;
   color: white;
