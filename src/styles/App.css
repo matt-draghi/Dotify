@@ -118,6 +118,10 @@ h1, h3, p {
   flex-direction: row;
 }
 
+.song-card-image {
+  cursor: pointer;
+}
+
 .song-details { 
   display: flex;
   flex-direction: column;
@@ -303,7 +307,7 @@ h1, h3, p {
   z-index: 10;
   background-color: #222222;
   color: white;
-  height: 765gpx;
+  height: 765px;
   width: 1285px;
   max-width: 70%;
   text-align: center;
